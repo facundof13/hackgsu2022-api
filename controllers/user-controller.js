@@ -8,9 +8,7 @@ module.exports = class UserController {
     }
 
     register = (req, res) => {
-        console.log(req.body);
         passport.authenticate('register', (err, user, info) => {
-            console.log(err, user, info);
             if (!err) {
                 req.logIn(user, (err) => {
                     res.json({ successful: user ? true : false, message: info?.message });

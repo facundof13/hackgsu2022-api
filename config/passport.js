@@ -20,7 +20,6 @@ passport.use(
             session: false,
         },
         (username, password, done) => {
-            console.log(username, password);
             try {
                 knex('user').where({
                     username
@@ -51,7 +50,6 @@ passport.use('login', new localStrategy({
     session: false,
 },
     (username, password, done) => {
-        console.log(username, password);
         try {
             knex('user').where({ username }).first().then((user) => {
                 if (!user) {
@@ -80,7 +78,6 @@ const options = {
 passport.use(
     'jwt',
     new JWTStrategy(options, (jwt_payload, done) => {
-        console.log(jwt_payload);
         try {
             knex('user').where({ id: jwt_payload.id }).first().then(user => {
                 if (user) {
