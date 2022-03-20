@@ -43,8 +43,8 @@ app.use('/api', [
     require('./routes/framework'),
 ]);
 
-app.listen(4000, () => {
-    console.info('Server started on port 4000');
+app.listen(process.env.PORT || 4000, () => {
+    console.info(`Server started on port ${process.env.PORT || 4000}`);
 }).on('error', (err) => {
     console.error(err);
 });
